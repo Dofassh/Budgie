@@ -1,7 +1,4 @@
 # Budgie
-<<<<<<< HEAD
-A money tracking app
-=======
 ## A money tracking app
 
 Budgie is a full-stack application for budget management/tracking expenses.
@@ -26,5 +23,4 @@ https://trello.com/b/YTyWXLTM/budgie-app
 * Creating a Node.js expenses tracking app
 * Using MongoDB as a No Sql Database
 * Creating a friendly UI 
->>>>>>> 9120ab8cfaaa5466ab80a6451770cdea84237c0e
 
