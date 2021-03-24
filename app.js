@@ -46,7 +46,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', sessionsRouter);
 app.use('/signup', signupRouter);
-//app.use('/dashboard', sessionChecker, dashboardRouter);
+app.get('/dashboard', sessionChecker, function(req, res){
+  res.send("dashboard")
+});
 
 
 // catch 404 and forward to error handler
