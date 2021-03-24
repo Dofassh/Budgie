@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('express-handlebars');
+var session = require('express-session');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -23,11 +25,32 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  key: 'user_sid',
+  secret: 'somerandonstuffs',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      expires: 600000
+  }
+}));
+var sessionChecker = (req, res, next) => {
+  if (!req.session.user || !req.cookies.user_sid) {
+      res.redirect('/login');
+  } else {
+      next();
+  }    
+};
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', sessionsRouter);
 app.use('/signup', signupRouter);
+app.get('/dashboard', sessionChecker, function(req, res){
+  res.send("dashboard")
+});
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
