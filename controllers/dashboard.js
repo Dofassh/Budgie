@@ -1,7 +1,6 @@
 var Income = require("../models/income");
 var User = require("../models/user");
 
-//var Outcome = require("../models/outcome");
 var mongoose = require("mongoose");
 var DashboardController = {
   Index: function (req, res) {
