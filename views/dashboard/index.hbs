@@ -1,7 +1,10 @@
 <h1>Hi, {{this.user}}, and welcome to your budget dashboard</h1>
-<a type="submit" href="/dashboard/new">add new budget</a>
+<a type="submit" href="/dashboard/new">add new income</a>
 
-<div>
-  <p>your budget is: {{this.income}}</p>
-</div>
+{{#each incomes}}
+  <div>
+    <p>your income is: {{this.total}}</p>
+  </div>
+{{/each}}
+
 

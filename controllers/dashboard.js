@@ -1,17 +1,19 @@
 var Income = require("../models/income");
+var User = require("../models/user");
+
 //var Outcome = require("../models/outcome");
 var mongoose = require("mongoose");
 
 var DashboardController = {
   Index: function (req, res) {
     Income.find()
-      .sort()
+      // .sort()
       //.populate({ path: "comments" })
       .exec(function (err, incomes) {
         if (err) {
           throw err;
         }
-        res.render("dashboard/index", { income: incomes });
+        res.render("dashboard/index", { incomes: incomes }); 
       });
   },
 
@@ -20,12 +22,17 @@ var DashboardController = {
   },
   
   Create: function (req, res) {
-    console.log(req.session.user.email);
     var income = new Income({
-      income: req.body.income,
+      total: req.body.total,
       user: req.session.user.email,
     });
-    console.log(income)
+    console.log(income.total)
+    console.log(req.body.total);
+    console.log("mid check");
+
+    console.log(req.session.user.email);
+    console.log(income.user);
+
     console.log("trying to see the budget here")
 
 
@@ -33,6 +40,8 @@ var DashboardController = {
       if (err) {
         throw err;
       }
+      console.log("before redirecting")
+
       res.status(201).redirect("/dashboard");
     });
   },
