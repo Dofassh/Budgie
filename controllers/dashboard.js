@@ -6,14 +6,19 @@ var mongoose = require("mongoose");
 
 var DashboardController = {
   Index: function (req, res) {
-    Income.find()
+    var currentUser = req.session.user.email
+    Income.find({
+      user: currentUser
+    
+    })
       // .sort()
       //.populate({ path: "comments" })
       .exec(function (err, incomes) {
         if (err) {
           throw err;
         }
-        res.render("dashboard/index", { incomes: incomes }); 
+
+        res.render("dashboard/index", { incomes: incomes, user: currentUser }); 
       });
   },
 
@@ -33,6 +38,7 @@ var DashboardController = {
       groceries: req.body.groceries,
       entertainment: req.body.entertainment,
     });
+
 
     console.log(income.expenses)
     console.log(income.total)

@@ -1,10 +1,10 @@
-<h1>Hi, {{this.user}}, and welcome to your budget dashboard</h1>
+<h1>Hi, {{user}}, and welcome to your budget dashboard</h1>
 <a type="submit" href="/dashboard">add new income</a>
 
 
 {{#each incomes}}
   <div>
-    <p>your income is: {{this.total}}</p>
+    <p>your income is: {{ this.total }}</p>
   </div>
 {{/each}}
 
