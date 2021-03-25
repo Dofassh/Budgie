@@ -24,8 +24,17 @@ var DashboardController = {
   Create: function (req, res) {
     var income = new Income({
       total: req.body.total,
+      savings: req.body.savings,
       user: req.session.user.email,
     });
+
+    income.expenses.push({ 
+      utilities: req.body.utilities,
+      groceries: req.body.groceries,
+      entertainment: req.body.entertainment,
+    });
+
+    console.log(income.expenses)
     console.log(income.total)
     console.log(req.body.total);
     console.log("mid check");
