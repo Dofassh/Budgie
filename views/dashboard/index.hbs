@@ -1,10 +1,20 @@
 <h1>Hi, {{this.user}}, and welcome to your budget dashboard</h1>
-<a type="submit" href="/dashboard/new">add new income</a>
+<a type="submit" href="/dashboard">add new income</a>
+
 
 {{#each incomes}}
   <div>
     <p>your income is: {{this.total}}</p>
   </div>
 {{/each}}
+
+<form action="/dashboard" method="post">
+  <input name="total" placeholder="what's your income for this month?">
+  <input name="savings" placeholder="your savings">
+  <input name="groceries" placeholder="money spent on groceries">
+  <input name="utilities" placeholder="money spent on utilities">
+  <input name="entertainment" placeholder="money spent on entertainment">
+  <button type="submit">+</button>
+</form>
 
 

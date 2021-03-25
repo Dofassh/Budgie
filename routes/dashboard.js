@@ -6,6 +6,6 @@ var DashboardController = require('../controllers/dashboard')
 
 router.get('/',  DashboardController.Index);
 router.post('/', DashboardController.Create);
-router.get('/new', DashboardController.New);
+router.get('/', DashboardController.New);
 
 module.exports = router;

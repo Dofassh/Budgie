@@ -18,7 +18,7 @@ var DashboardController = {
   },
 
   New: function (req, res) {
-    res.render("dashboard/new", {});
+    res.render("dashboard", {});
   },
   
   Create: function (req, res) {
