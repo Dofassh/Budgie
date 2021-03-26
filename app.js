@@ -1,3 +1,4 @@
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -20,6 +21,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 
+// register handlebars helpers
+var expressHandlebars = hbs.create()
+expressHandlebars.handlebars.registerHelper('totalExpenses', function(expenseFields) {
+if (expenseFields.length > 1) {
+  return expenseFields.reduce(function(result, nextExpense) {
+    return result + nextExpense.groceries + nextExpense.entertainment + nextExpense.utilities;
+},  0 )
+} else if (expenseFields.length == 1 ) {
+  return expenseFields[0].groceries, expenseFields[0].entertainment,expenseFields[0].utilities;
+  } 
+})
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -2,9 +2,9 @@ var mongoose = require("mongoose");
 
 var ExpenseFieldSchema = new mongoose.Schema({
     user: String, 
-    groceries: Number,
-    utilities: Number,
-    entertainment: Number,
+    groceries: {type:Number, default: 0},
+    utilities: {type: Number, default: 0},
+    entertainment: {type: Number, default: 0},
     statement_id: { type: mongoose.Schema.Types.ObjectId, ref: "Statement" },
 }) 
 
