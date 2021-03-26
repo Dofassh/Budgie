@@ -1,16 +1,16 @@
 <h1>Hi, {{user}}, and welcome to your budget dashboard</h1>
-<a type="submit" href="/dashboard">add new income</a>
+<a type="submit" href="/dashboard">add new statement</a>
 
 
-{{#each incomes}}
+{{#each statements}}
   <div>
-    <p>your income is: {{ this.total }}</p>
+    <p>your statement is: {{ this.income }}</p>
     <p>your savings is: {{ this.savings }}</p>
   </div>
 {{/each}}
 
 <form action="/dashboard" method="post">
-  <input name="total" placeholder="what's your income for this month?">
+  <input name="income" placeholder="what's your statement for this month?">
   <input name="savings" placeholder="your savings">
   <input name="groceries" placeholder="money spent on groceries">
   <input name="utilities" placeholder="money spent on utilities">

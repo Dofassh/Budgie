@@ -1,4 +1,4 @@
-var Income = require("../models/income");
+var Statement = require("../models/statement");
 var User = require("../models/user");
 
 var mongoose = require("mongoose");
@@ -6,41 +6,40 @@ var DashboardController = {
   Index: function (req, res) {
 
     var currentUser = req.session.user.email
-    Income.find({
+    Statement.find({
       user: currentUser
     }).lean()
 
       // .sort()
       //.populate({ path: "comments" })
-      .exec(function (err, incomes) {
+      .exec(function (err, statements) {
         if (err) {
           throw err;
 
         }
-        console.log("string" + incomes[0].total)
-        res.render("dashboard/index", { incomes: incomes, user: currentUser });
+        res.render("dashboard/index", { statements: statements, user: currentUser });
       });
   },
   New: function (req, res) {
     res.render("dashboard", {});
   },
   Create: function (req, res) {
-    var income = new Income({
-      total: req.body.total,
+    var statement = new Statement({
+      income: req.body.income,
       savings: req.body.savings,
       user: req.session.user.email,
     });
 
-    income.expenses.push({
+    statement.expenses.push({
       utilities: req.body.utilities,
       groceries: req.body.groceries,
       entertainment: req.body.entertainment,
     });
 
 
-    console.log(income.expenses)
-    console.log(income.total)
-    console.log(req.body.total);
+    console.log(statement.expenses)
+    console.log(statement.income)
+    console.log(req.body.income);
     console.log("mid check");
 
     console.log(req.session.user.email);
@@ -48,7 +47,7 @@ var DashboardController = {
     console.log("trying to see the budget here")
 
 
-    income.save(function (err) {
+    statement.save(function (err) {
       if (err) {
         throw err;
       }
