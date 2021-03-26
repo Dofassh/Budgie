@@ -6,13 +6,13 @@ var Expenses = new mongoose.Schema({
  entertainment: Number,
 })
 
-var IncomeSchema = new mongoose.Schema({
-  total: Number,
+var StatementSchema = new mongoose.Schema({
+  income: Number,
   expenses: [Expenses],
   savings: Number,
   user: String,
 });
 
-var Income = mongoose.model("Income", IncomeSchema);
+var statement = mongoose.model("statement", StatementSchema);
 
-module.exports = Income;
+module.exports = statement;
