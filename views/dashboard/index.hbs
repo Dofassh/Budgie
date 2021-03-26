@@ -6,8 +6,7 @@
   <div>
     <p>your income is: {{ this.income }}</p>
     <p>your savings: {{ this.savings }}</p>
-    <p>total expenses: {{ this.totalexpenses}}</p>
-    <p>current balance: {{ this.remainingbalance}}</p>
+    <p>total expenses: {{totalExpenses this.expensefields}}</p>
   </div>
 
 <form action="/dashboard/expensefield" method="post">

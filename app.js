@@ -19,6 +19,14 @@ app.engine('hbs' , hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __d
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+// register handlebars helpers
+var expressHandlebars = hbs.create()
+
+expressHandlebars.handlebars.registerHelper('totalExpenses', function(expenseFields) {
+  return expenseFields.reduce(function(result, nextExpense) {
+    return result + nextExpense.groceries;
+  }, 0)
+})
 
 
 app.use(logger('dev'));
