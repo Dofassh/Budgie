@@ -12,8 +12,25 @@
 <form action="/dashboard" method="post">
   <input name="income" placeholder="what's your statement for this month?">
   <input name="savings" placeholder="your savings">
+  {{!-- <input name="groceries" placeholder="money spent on groceries">
+  <input name="utilities" placeholder="money spent on utilities">
+  <input name="entertainment" placeholder="money spent on entertainment"> --}}
+  <input type="hidden" name="id" value="{{this._id}}">
+  <button type="submit">+</button>
+</form>
+
+{{#each this.expensefields}}
+  <div>
+    <p>your spendages on groceries are: {{ this.expensefield }}</p>
+    <p>your spendages on utilities are: {{ this.expensefield }}</p>
+  </div>
+{{/each}}
+
+<form action="/dashboard" method="post">
   <input name="groceries" placeholder="money spent on groceries">
   <input name="utilities" placeholder="money spent on utilities">
   <input name="entertainment" placeholder="money spent on entertainment">
+  <input type="hidden" name="id" value="{{this._id}}">
   <button type="submit">+</button>
 </form>
+

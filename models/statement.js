@@ -1,18 +1,18 @@
 var mongoose = require("mongoose");
 
-var Expenses = new mongoose.Schema({ 
- utilities: Number,
- groceries: Number,
- entertainment: Number,
-})
+// var Expenses = new mongoose.Schema({ 
+//  utilities: Number,
+//  groceries: Number,
+//  entertainment: Number,
+// })
 
 var StatementSchema = new mongoose.Schema({
   income: Number,
-  expenses: [Expenses],
+  expensefields: [{ type: mongoose.Schema.Types.ObjectId, ref: "ExpenseField" }],
   savings: Number,
   user: String,
 });
 
-var statement = mongoose.model("statement", StatementSchema);
+var Statement = mongoose.model("Statement", StatementSchema);
 
-module.exports = statement;
+module.exports = Statement;

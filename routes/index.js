@@ -8,4 +8,3 @@ var HomeController = require('../controllers/index');
 router.get('/', HomeController.Index);
 
 module.exports = router;
-
