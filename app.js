@@ -24,7 +24,7 @@ var expressHandlebars = hbs.create()
 
 expressHandlebars.handlebars.registerHelper('totalExpenses', function(expenseFields) {
   return expenseFields.reduce(function(result, nextExpense) {
-    return result + nextExpense.groceries;
+    return result + nextExpense.groceries + nextExpense.entertainment + nextExpense.utilities;
   }, 0)
 })
 
