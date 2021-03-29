@@ -36,13 +36,12 @@ google.charts.setOnLoadCallback(drawChart);
 // Draw the chart and set the chart values
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
-  ['Task', 'Hours per Day'],
-  ['Work', {{this.income}}],
-  ['Friends', 2],
-  ['Eat', 2],
-  ['TV', 2],
-  ['Gym', 2],
-  ['Sleep', 8]
+  ['Task', 'Amount'],
+  ['Income', {{ this.income }}],
+  ['Groceries', {{ totalGroceriesExpenses this.expensefields }}],
+  ['Utilities', 2],
+  ['Entertainment', 2],
+  ['Savings', {{ this.savings }}]
 ]);
 
   // Optional; add a title and set the width and height of the chart

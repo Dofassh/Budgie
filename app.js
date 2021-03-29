@@ -30,6 +30,13 @@ expressHandlebars.handlebars.registerHelper('totalExpenses', function(expenseFie
 },  0 ) 
 })
 
+// create a new helper like this one for utilities and entertainment
+expressHandlebars.handlebars.registerHelper('totalGroceriesExpenses', function(expenseFields) {
+  return expenseFields.reduce(function(result, nextExpense) {
+    return result + nextExpense.groceries;
+  }, 0)
+})
+
 expressHandlebars.handlebars.registerHelper('remainingBalance', function(statement) {
   console.log(statement)
   console.log(statement.expensefields)
