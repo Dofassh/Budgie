@@ -57,8 +57,8 @@ var DashboardController = {
   ExpenseField: function (req, res) {
     var expensefield = new ExpenseField({ 
       user: req.session.user.email,
-      utilities: req.body.utilities,
       groceries: req.body.groceries,
+      utilities: req.body.utilities,
       entertainment: req.body.entertainment,
       statement_id: req.body.id,
     });

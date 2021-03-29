@@ -14,12 +14,12 @@ var StatementSchema = new mongoose.Schema({
 //   return 40;
 // }
 
-StatementSchema.virtual('totalexpenses').get(function() {
-  return 100;
-});
-StatementSchema.virtual('remainingbalance').get(function() {
-  return 50;
-});
+// StatementSchema.virtual('totalexpenses').get(function() {
+//   return 100;
+// });
+// StatementSchema.virtual('remainingbalance').get(function() {
+//   return 50;
+// });
 
 var Statement = mongoose.model("Statement", StatementSchema);
 
