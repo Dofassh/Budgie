@@ -1,3 +1,4 @@
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -20,6 +21,40 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 
+// register handlebars helpers
+var expressHandlebars = hbs.create()
+
+expressHandlebars.handlebars.registerHelper('totalExpenses', function(expenseFields) {
+  return expenseFields.reduce(function(result, nextExpense) {
+    return result + nextExpense.groceries + nextExpense.entertainment + nextExpense.utilities;
+},  0 ) 
+})
+
+// create a new helper like this one for utilities and entertainment
+expressHandlebars.handlebars.registerHelper('totalGroceriesExpenses', function(expenseFields) {
+  return expenseFields.reduce(function(result, nextExpense) {
+    return result + nextExpense.groceries;
+  }, 0)
+})
+
+expressHandlebars.handlebars.registerHelper('remainingBalance', function(statement) {
+  console.log(statement)
+  console.log(statement.expensefields)
+
+  var totalExpenses = statement.expensefields.reduce(function(result, nextExpense) {
+    console.log("first")
+      return result + nextExpense.groceries + nextExpense.entertainment + nextExpense.utilities;
+  }, 0 )
+  console.log("second")
+
+return statement.income - statement.savings - totalExpenses;
+})
+console.log("third")
+
+
+// The income and saving belong to your statement object, not the expensefields.  
+// You'll need to pass in the expense object instead and access the expenseFields in your handlebars helper.
+// Inside the handlebars helper, you'll need to re-calculate totalExpenses before doing the maths
 
 app.use(logger('dev'));
 app.use(express.json());
