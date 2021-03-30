@@ -7,8 +7,10 @@ var DashboardController = {
   Index: function (req, res) {
 
     var currentUser = req.session.user.email
+    var displayUser = req.session.user.username
+
     Statement.find({
-      user: currentUser
+      user: currentUser,
     }).lean()
 
       // .sort()
@@ -18,7 +20,7 @@ var DashboardController = {
           throw err;
 
         }
-        res.render("dashboard/index", { statements: statements, user: currentUser });
+        res.render("dashboard/index", { statements: statements, user: displayUser });
       });
   },
   New: function (req, res) {
