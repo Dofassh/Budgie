@@ -37,10 +37,10 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
   ['Task', 'Amount'],
-  ['Income', {{ this.income }}],
+  //['Income', {{ this.income }}],
   ['Groceries', {{ totalGroceriesExpenses this.expensefields }}],
-  ['Utilities', 2],
-  ['Entertainment', 2],
+  ['Utilities', {{ totalUtilitiesExpenses this.expensefields }}],
+  ['Entertainment', {{ totalEntExpenses this.expensefields }}],
   ['Savings', {{ this.savings }}]
 ]);
 
@@ -60,5 +60,3 @@ function drawChart() {
   <input type="hidden" name="id" value="{{this._id}}">
   <button type="submit">+</button>
 </form>
-
-
