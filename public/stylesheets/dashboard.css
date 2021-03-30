@@ -1,0 +1,30 @@
+h1{
+    font-family: 'Courgette', cursive;
+}
+
+.statement{
+    /* border: 2px solid blue; */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-family: 'Poiret One', cursive;
+    font-size: 20px;
+    font-weight:bolder;
+}
+
+.piechart{
+    /* border: 3px solid red; */
+    flex-box: auto;
+    width: 40vw;
+}
+
+.expenseInput{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+}
+
+button{
+    border: none;
+    style: none;
+}
