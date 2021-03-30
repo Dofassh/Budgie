@@ -1,32 +1,49 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Baloo+2:wght@600&family=Courgette&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+ <script src="https://kit.fontawesome.com/32ebbe4a5f.js" crossorigin="anonymous"></script>   
+  <link rel="stylesheet" href="/stylesheets/dashboard.css" />
+
+
 <h1>Hi, {{user}}, and welcome to your budget dashboard</h1>
 
 {{#each statements}}
 
 <div class="statement">
   <div>
-    <p>your income is: {{ this.income }}</p>
     <p>your savings: {{ this.savings }}</p>
     <p>total expenses: {{ totalExpenses this.expensefields}}</p>
-    <p>current balance: {{ remainingBalance this}}</p>
-  </div>
-
-<form action="/dashboard/expensefield" method="post">
-  <input name="groceries" placeholder="spent on groceries">
-  <input name="utilities" placeholder="spent on utilities">
-  <input name="entertainment" placeholder="spent on entertainment">
-  <input type="hidden" name="id" value="{{this._id}}">
-  <button type="submit">+</button>
-</form>
-
-    {{#each this.expensefields}}
+    <div>
+      <form action="/dashboard/expensefield" method="post" class="expenseInput">
       <div>
+      <i class="fas fa-shopping-cart"></i>
+        <input name="groceries" placeholder="spent on groceries">
+        <button type="submit"><i class="fas fa-plus"></i></button>
+      </div>
+      <div>
+        <i class="fas fa-home"></i>
+        <input name="utilities" placeholder="spent on utilities">
+        <button type="submit"><i class="fas fa-plus"></i></button>
+        </div>
+        <div>
+        <i class="fas fa-music"></i>
+        <input name="entertainment" placeholder="spent on entertainment">
+        <input type="hidden" name="id" value="{{this._id}}">
+        <button type="submit"><i class="fas fa-plus"></i></button>
+        </div>
+      </form>
+    </div>
+</div>
+    {{#each this.expensefields}}
+      {{!-- <div>
         <p>you spent on groceries: {{ this.groceries }}</p>
         <p>you spent on utilities: {{ this.utilities }}</p>
         <p>you spent on entertainment: {{ this.entertainment }}</p>
-      </div>
+      </div> --}}
     {{/each}}
-</div>
-<div id="{{this._id}}"></div>
+
+<div id="{{this._id}}" class="piechart"></div>
 
 <script type="text/javascript">
 // Load google charts
@@ -45,13 +62,18 @@ function drawChart() {
 ]);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'title':'Monthly Expenses', 'width':550, 'height':400, is3D: true,};
+  var options = {'title':'Monthly Expenses', 'width':550, 'height':400, is3D: true, right:70, pieSliceText:'value'};
 
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById("{{this._id}}"));
   chart.draw(data, options);
 }
 </script>
+  <div>
+    <p>your income is: {{ this.income }}</p>
+    <p>current balance: {{ remainingBalance this}}</p>
+  </div>  
+</div>
 {{/each}}
 
 <form action="/dashboard" method="post">
