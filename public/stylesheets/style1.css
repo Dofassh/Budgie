@@ -20,11 +20,11 @@ body{
     animation:fly 5s infinite;
 }
 @keyframes bg-change{
-    0%{background-color: #2e87cf;}
+    0%{background-color: #0cd4ee;}
     25%{background-color: #28cce2;}
     50%{ background-color: rgb(132, 212, 223);}
     75%{background-color:3398db;}
-    100%{background-color: #5c5cf0;}
+    100%{background-color: #6847b6;}
 }
 @keyframes fly{
     0%{
@@ -41,7 +41,7 @@ body{
         top:25%;
     }
     100%{
-        left: -120px;
+        left: -650px;
         top:102px;
     }
 }
@@ -60,7 +60,7 @@ body{
 
   }
   .button5 {border-radius: 50%;}
-  /*body {
+  body {
     margin: 0;
     height: 100vh;
     font-weight: 100;
@@ -414,4 +414,4 @@ button:focus{
   -moz-transform: translate(95vw,90vh);
   transform: translate(95vw,90vh);
   transform: translate(95vw,90vh);
-}*/
+}
