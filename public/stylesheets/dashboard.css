@@ -95,7 +95,7 @@ ul {
   /* background-color: rgb(117, 136, 133); */
   border-radius: 12px;
   background: -webkit-linear-gradient(to right, #12e9cc, #0ecccc);
-  background: linear-gradient(to right, #0ad4b3, #0ad4b3);
+  background: linear-gradient(to right, #0ad4b3, #6ADBC6);
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
