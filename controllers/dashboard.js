@@ -20,7 +20,7 @@ var DashboardController = {
           throw err;
 
         }
-        res.render("dashboard/index", { statements: statements, user: displayUser.toUpper});
+        res.render("dashboard/index", { statements: statements, user: displayUser});
       });
   },
   New: function (req, res) {
