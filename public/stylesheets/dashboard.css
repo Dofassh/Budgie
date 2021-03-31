@@ -18,6 +18,8 @@ h1{
     /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM2-KjkR4SOrRBZ2ieoznluN_lYDCEnBImgQ&usqp=CAU); */
     /* background-size: cover; */
     background-color: #92d4cf ;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-style: none;
 }
 
