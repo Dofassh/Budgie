@@ -5,7 +5,19 @@ var StatementSchema = new mongoose.Schema({
   expensefields: [{ type: mongoose.Schema.Types.ObjectId, ref: "ExpenseField" }],
   savings: Number,
   user: String,
+  month: String,
+  // month: {type: String, enum: ['Month', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], required: true}
 });
+
+
+  //  units: {
+  //           type: String,
+  //           enum: ['KG', 'liters', 'meters', 'cm'],
+  //           required : true 
+  //       }
+
+
+
 
 // StatementSchema.methods.totalexpenses = function() { //assigned anonymous function
 // return 100;

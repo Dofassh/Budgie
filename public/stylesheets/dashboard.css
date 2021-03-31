@@ -41,5 +41,7 @@ body{
 
 .border{
     border-style: 0.3px;
-    background: transparent;
+    background: white;
+        border: none;
+
 }

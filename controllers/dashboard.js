@@ -31,6 +31,7 @@ var DashboardController = {
       income: req.body.income,
       savings: req.body.savings,
       user: req.session.user.email,
+      month: req.body.month,
     });
 
     // statement.expenses.push({

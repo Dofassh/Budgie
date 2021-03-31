@@ -57,8 +57,24 @@ li a:hover {
 <h1>{{user}}'s Budgie Dashboard</h1> 
 
  <form action="/dashboard" method="post">
-  <input name="income" placeholder="what's your statement for this month?">
-  <input name="savings" placeholder="your savings">
+{{!-- <select name="month" id="month">
+  <option value="Month">Month</option>
+  <option value="Jan">January</option>
+  <option value="Feb">February</option>
+  <option value="Mar">March</option>
+  <option value="Apr">April</option>
+  <option value="May">May</option>
+  <option value="Jun">June</option>
+  <option value="Jul">July</option>
+  <option value="Aug">August</option>
+  <option value="Sep">September</option>
+  <option value="Oct">October</option>
+  <option value="Nov">November</option>
+  <option value="Dec">December</option>
+</select> --}}
+ <input name="month" placeholder="Month" class="border">
+  <input name="income" placeholder="Income for this month" class="border">
+  <input name="savings" placeholder="Your savings" class="border">
   <input type="hidden" name="id" value="{{this._id}}">
   <button type="submit">+</button>
 </form>
@@ -68,23 +84,24 @@ li a:hover {
 
 <div class="statement">
   <div>
+    <p>Month: {{ this.month }}</p>
     <p>your savings: {{ this.savings }}</p>
     <p>total expenses: {{ totalExpenses this.expensefields}}</p>
     <div>
       <form action="/dashboard/expensefield" method="post" class="expenseInput">
       <div>
       <i class="fas fa-shopping-cart"></i>
-        <input name="groceries" placeholder="spent on groceries" class="border">
+        <input name="groceries" placeholder="Groceries" class="border">
         <button type="submit"><i class="fas fa-plus"></i></button>
       </div>
       <div>
         <i class="fas fa-home"></i>
-        <input name="utilities" placeholder="spent on utilities" class="border">
+        <input name="utilities" placeholder="Utilities" class="border">
         <button type="submit"><i class="fas fa-plus"></i></button>
         </div>
         <div>
         <i class="fas fa-music"></i>
-        <input name="entertainment" placeholder="spent on entertainment" class="border">
+        <input name="entertainment" placeholder="Entertainment" class="border">
         <input type="hidden" name="id" value="{{this._id}}">
         <button type="submit"><i class="fas fa-plus"></i></button>
         </div>
@@ -107,11 +124,12 @@ li a:hover {
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
+
 // Draw the chart and set the chart values
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
   ['Task', 'Amount'],
-  ['Remaining Balance', {{ remainingBalance this }}],
+  ['Current Balance', {{ remainingBalance this }}],
   ['Groceries', {{ totalGroceriesExpenses this.expensefields }}],
   ['Utilities', {{ totalUtilitiesExpenses this.expensefields }}],
   ['Entertainment', {{ totalEntExpenses this.expensefields }}],
@@ -119,7 +137,7 @@ function drawChart() {
 ]);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'title':'Monthly Expenses', 
+  var options = {'title': 'Monthly Expenses', 
       'width':550, 
       'height':400, 
       is3D: true, 
