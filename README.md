@@ -4,7 +4,7 @@
 Budgie is a full-stack application for budget management/tracking expenses.
 There are features that allow the user to Sign Up securely using encrypted password, Login, Logout and Track their expenses.
 
-Expenses logic: Create, Update, View, Delete Incomes and Expenses and users can get total Income & Expenses.
+Expenses logic: Create, Update, View, Delete Incomes and Expenses and users can get income statement & Expenses.
 ### <a name="run-the-app"></a>Try it out:
 Follow the steps below :
 
@@ -15,7 +15,7 @@ https://trello.com/b/YTyWXLTM/budgie-app
 
 * Node.js
 * `npm` modules used in the API.
- * `express`, `crypto-js`, `bcryptjs`, `underscore`, `body-parser`,`JWT`,`mongoose`
+ * `express`, `mongoose`
 * MongoDB
 
 ### <a name="our-goals"></a> Our goals:
