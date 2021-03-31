@@ -1,58 +1,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Baloo+2:wght@600&family=Courgette&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
  <script src="https://kit.fontawesome.com/32ebbe4a5f.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/stylesheets/dashboard.css" />
 
-<style>
-body {
-  font-size: 28px;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: rgb(117, 136, 133);
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover {
-  background-color: rgb(236, 227, 227);
-}
-
-.active {
-  background-color: #4CAF50;
-}
-</style>
-
 
 <ul>
- <li><a href="https://www.gov.uk/coronavirus/worker-support">GOV.uk</a></li>
-  <li><a href="https://www.usa.gov/disaster-help-food-housing-bills">USA.gov</a></li>
-    <li><a href=" https://financebuzz.com/ways-to-make-extra-money?utm_source=GoogleAdWords&utm_medium=paid-search-g&utm_campaign=SideHustle_EasyMoney_1138479818_59394857899&utm_content=294342832927&utm_term=how%20to%20earn%20extra%20money&mt=e&device=c&devicemodel=&targetid=kwd-33672711&target=&keyword=how%20to%20earn%20extra%20money&campaignid=1138479818&adgroupid=59394857899&gclid=EAIaIQobChMIstyX5a7Z7wIVs-y1Ch1D1wh6EAAYBCAAEgL-MfD_BwE">How to earn extra money</a></li>
-     <li><a href="https://www.dllr.state.md.us/finance/consumers/frcovid.shtml">COVID-19 FINANCIAL RELIEF</a></li>
-  <li><a href="#contact">Logout</a></li>
+ <li><a href="https://www.england.nhs.uk/supporting-our-nhs-people/how-to-guides/financial-wellbeing/financial-wellbeing-support/">UK Financial Wellbeing Support</a></li>
+  <li><a href="https://www.usa.gov/disaster-help-food-housing-bills">US Financial Support</a></li>
+    <li><a href=" https://financebuzz.com/ways-to-make-extra-money?utm_source=GoogleAdWords&utm_medium=paid-search-g&utm_campaign=SideHustle_EasyMoney_1138479818_59394857899&utm_content=294342832927&utm_term=how%20to%20earn%20extra%20money&mt=e&device=c&devicemodel=&targetid=kwd-33672711&target=&keyword=how%20to%20earn%20extra%20money&campaignid=1138479818&adgroupid=59394857899&gclid=EAIaIQobChMIstyX5a7Z7wIVs-y1Ch1D1wh6EAAYBCAAEgL-MfD_BwE">How To Earn Extra Money</a></li>
+     <li><a href="https://www.dllr.state.md.us/finance/consumers/frcovid.shtml">COVID-19 Financial Relief</a></li>
+   <li style="float:right"><a class="logout" href="/login">Log Out</a></li>
 </ul>
+
 
 <h1>{{user}}'s Budgie Dashboard</h1> 
 
@@ -72,21 +31,21 @@ li a:hover {
   <option value="Nov">November</option>
   <option value="Dec">December</option>
 </select> --}}
- <input name="month" placeholder="Month" class="border">
-  <input name="income" placeholder="Income for this month" class="border">
-  <input name="savings" placeholder="Your savings" class="border">
+ <i class="far fa-calendar-alt"></i><input name="month" placeholder="Month" class="border incomeForm" >
+  <i class="far fa-money-bill-alt"></i><input name="income" placeholder="Income" class="border incomeForm">
+  <i class="fas fa-piggy-bank"></i><input name="savings" placeholder="Your savings" class="border incomeForm">
   <input type="hidden" name="id" value="{{this._id}}">
-  <button type="submit">+</button>
+  <button type="submit"><i class="fas fa-plus"></i></button>
 </form>
 
 {{#each statements}}
 
 
 <div class="statement">
-  <div>
+  <div class="expenseContainer">
     <p>Month: {{ this.month }}</p>
-    <p>your savings: {{ this.savings }}</p>
-    <p>total expenses: {{ totalExpenses this.expensefields}}</p>
+    <p>Your Savings: ${{ this.savings }}</p>
+    <p>Total Expenses: ${{ totalExpenses this.expensefields}}</p>
     <div>
       <form action="/dashboard/expensefield" method="post" class="expenseInput">
       <div>
@@ -102,8 +61,8 @@ li a:hover {
         <div>
         <i class="fas fa-music"></i>
         <input name="entertainment" placeholder="Entertainment" class="border">
-        <input type="hidden" name="id" value="{{this._id}}">
         <button type="submit"><i class="fas fa-plus"></i></button>
+        <input type="hidden" name="id" value="{{this._id}}">
         </div>
       </form>
     </div>
@@ -139,7 +98,8 @@ function drawChart() {
   // Optional; add a title and set the width and height of the chart
   var options = {'title': 'Monthly Expenses', 
       'width':550, 
-      'height':400, 
+      'height':400,
+      'chartArea': {'width': '110%', 'height': '80%'}, 
       is3D: true, 
       right:70, 
       pieSliceText:'value', 
@@ -152,11 +112,15 @@ function drawChart() {
   chart.draw(data, options);
 }
 </script>
-  <div>
-    <p>your income is: {{ this.income }}</p>
-    <p>current balance: {{ remainingBalance this}}</p>
+  <div class="rightSide">
+    <p>Your Income Is: ${{ this.income }}</p>
+    <p>Current Balance: ${{ remainingBalance this}}</p>
   </div>
 </div>
 {{/each}}
 
-
+<div class="videos">
+<iframe width="400" height="215" src="https://www.youtube.com/embed/iPA7VWKZJ2Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="400" height="215" src="https://www.youtube.com/embed/a1l3xsBB1lw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="400" height="215" src="https://www.youtube.com/embed/aV7T9Qw0gfk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
