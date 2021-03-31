@@ -1,20 +1,27 @@
 h1{
-    font-family: 'Courgette', cursive;
+    /* font-family: 'Courgette', cursive; */
+    font-family: 'Baloo 2', cursive;
+    text-align: center;
 }
 
 .statement{
     /* border: 2px solid blue; */
     display: flex;
     flex-direction: row;
-    width: 100%;
-    font-family: 'Poiret One', cursive;
+    width: 100vw;
+    /* font-family: 'Red Hat Display', sans-serif; */
+    font-family: 'Baloo 2', cursive;
+    /* font-family: 'Poiret One', cursive; */
     font-size: 20px;
     font-weight:bolder;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    background-color: #CCCDE0 ;
+    border-style: none;
 }
 
 .piechart{
     /* border: 3px solid red; */
-    flex-box: auto;
     width: 40vw;
 }
 
@@ -26,5 +33,13 @@ h1{
 
 button{
     border: none;
-    style: none;
+}
+
+body{
+    background-color:#678AD1
+}
+
+.border{
+    border-style: 0.3px;
+    background: transparent;
 }
